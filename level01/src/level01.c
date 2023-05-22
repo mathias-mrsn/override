@@ -19,7 +19,7 @@ int verify_user_pass (char *password)
 
 int main (__attribute__((unused))int argc, __attribute__((unused))char **argv)
 {
-    char buffer[0x10]; // 0x1c(%esp)
+    char buffer[0x40]; // 0x1c(%esp)
     int n = 0; // 0x5c(%esp)
     memset(buffer, 0, 0x10);
     puts("********* ADMIN LOGIN PROMPT *********");
