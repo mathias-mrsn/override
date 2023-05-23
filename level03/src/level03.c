@@ -43,7 +43,6 @@ void decrypt (uint32_t n)
     uint32_t len = 0x0; // -0x24(%ebp)
 
     len = strlen((char *)&t[0]);
-
     while (k != len)
     {
         *(t+k) = *(t+k) ^ n;
@@ -78,12 +77,6 @@ void test (uint32_t n, uint32_t m)
             case 0x7:
             case 0x8:
             case 0x9:
-            case 0xa:
-            case 0xb:
-            case 0xc:
-            case 0xd:   
-            case 0xe:
-            case 0xf:
             case 0x10:
             case 0x11:
             case 0x12:
