@@ -8,7 +8,7 @@
 RELRO           STACK CANARY      NX            PIE             RPATH      RUNPATH      FILE
 Partial RELRO   Canary found      NX enabled    No PIE          No RPATH   No RUNPATH   /home/users/level03/level03
 ```
-For this level, the NX security is enabled. NX security is a security mechanism that protects the executable space and prevents the execution of code from the stack. The second security mechanism is the stack canary. It is a random value of padding set at compilation time to avoid exploiting a specific address. These two security measures prevent us from using techniques such as buffer overflow or shellcode injection. Therefore, we will need to find an alternative approach.
+#### For this level, the NX security is enabled. NX security is a security mechanism that protects the executable space and prevents the execution of code from the stack. The second security mechanism is the stack canary. It is a random value of padding set at compilation time to avoid exploiting a specific address. These two security measures prevent us from using techniques such as buffer overflow or shellcode injection. Therefore, we will need to find an alternative approach.
 ---
 
 This level has a lengthy and complex disassembled code, making it challenging to decompile. However, after hard work, I have realized that the solution is surprisingly simple.

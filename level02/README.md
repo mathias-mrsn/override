@@ -8,7 +8,7 @@
 RELRO           STACK CANARY      NX            PIE             RPATH      RUNPATH      FILE
 Partial RELRO   No canary found   NX disabled   No PIE          No RPATH   No RUNPATH   /home/users/level02/level02
 ```
-For this level, the NX security is disabled, so we can use overflow attacks again.
+#### For this level, the NX security is disabled, so we can use overflow attacks again.
 ---
 
 The level represents another step in reverse engineering since we are now dealing with a 64-bit program. This means we have to utilize 64-bit registers and instructions. Although this difference is not particularly significant for this level, it introduces new register names and instructions. However, it doesn't matter because we will apply the same automatisms as in the previous levels.

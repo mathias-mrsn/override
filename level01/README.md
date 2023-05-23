@@ -8,7 +8,7 @@ RELRO           STACK CANARY      NX            PIE             RPATH      RUNPA
 Partial RELRO   No canary found   NX disabled   No PIE          No RPATH   No RUNPATH   /home/users/level01/level01
 ```
 
-For this level, the NX security is disabled, so we can use the buffer overflow attack again. That's advantageous because we're going to need it.
+#### For this level, the NX security is disabled, so we can use the buffer overflow attack again. That's advantageous because we're going to need it.
 ---
 
 We're going to apply the same automation techniques as we did in Rainfall. First, we need to find a vulnerability within the code. If we examine the `main` function, we find two interesting lines:
