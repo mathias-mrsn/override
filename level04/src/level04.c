@@ -1,14 +1,18 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <unistd.h>
+#include <sys/ptrace.h>
+#include <sys/wait.h>
+#include <string.h>
+#include <signal.h>
 
 
-int32_t main (int32_t argc, char **argv)
+int32_t main (__attribute__((unused))int32_t argc, __attribute__((unused))char **argv)
 {
     pid_t local_var_ac = fork();
     char local_var_20[32];
     uint32_t local_var_a8 = 0;
-    uint32_t local_var_1c = 0;
+    int32_t local_var_1c = 0;
     pid_t local_var_a0 = 0;
     pid_t local_var_a4 = 0;
 
@@ -25,7 +29,7 @@ int32_t main (int32_t argc, char **argv)
     {
         do
         {
-            wait(local_var_1c);
+            wait(&local_var_1c);
             local_var_a0 = local_var_1c;
             local_var_a0 &= 0x7f;
             if (local_var_a0 != 0)
@@ -39,7 +43,7 @@ int32_t main (int32_t argc, char **argv)
                 puts("child is exiting...");
                 break;
             }
-            local_var_a8 = ptrace(3, local_var_ac, 0x2c, 0);
+            local_var_a8 = ptrace(3, local_var_ac, (caddr_t)0x2c, 0);
         } while (local_var_a8 != 0xb);
 
         puts("no exec() for you");
