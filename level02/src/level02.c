@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
-int main (int argc, char **argv) {
+int main (__attribute__((unused))int argc, __attribute__((unused))char **argv) {
 
     char buffer_1[0x60]; // -0x70(%rbp)
     char buffer_2[0x30]; // -0xa0(%rbp)
     char buffer_3[0x70]; // -0x110(%rbp)
-    int fd; // -0x8(%rbp)
+    FILE *fd; // -0x8(%rbp)
     int len; // -0xc(%rbp)
 
     memset(buffer_1, 0, 0xc);
@@ -27,7 +28,7 @@ int main (int argc, char **argv) {
         fwrite("ERROR: failed to read password file\n", 1, 0x24, stderr);
         exit(1);
     }
-    close(fd);
+    fclose(fd);
     puts("===== [ Secure Access System v1.0 ] =====");
 	puts("/***************************************\\");
 	puts("| You must login to access this system. |");
