@@ -20,14 +20,14 @@ int32_t store_number (char *buf)
     printf(" Index: ");
     local__c = get_unum();
 
-    if (local__c % 3 != 0 || local__10 >> 0x18 == 0xb7)
+    if (local__c % 3 == 0 || local__10 >> 0x18 == 0xb7)
     {
         printf(" *** ERROR! ***\n");
         printf("   This index is reserved for wil!\n");
         printf(" *** ERROR! ***\n");
         return (1);
     }
-    buf[local__c] = local__10;
+    buf[local__c * 4] = local__10;
     return (0);
 }
 
@@ -36,7 +36,7 @@ int32_t read_number (char * buf)
     uint32_t local__c = 0;
     printf(" Index:");
     local__c = get_unum();
-    printf(" Number at data[%u] is %u\n", local__c, buf[local__c]);
+    printf(" Number at data[%u] is %u\n", local__c, buf[local__c * 4]);
     return (0);
 }
 
@@ -65,7 +65,7 @@ int32_t main (__attribute__((unused))int32_t argc, __attribute__((unused))char *
         printf("Input command: ");
         local_1b4 = 1;
         fgets(local_1b8, 0x14, stdin);
-        local_1b8[strlen(local_1b8) - 2] = 0;
+        local_1b8[strlen(local_1b8) - 1] = 0;
 
         if (strncmp(local_1b8, "store", 5) == 0)
         {
@@ -85,5 +85,10 @@ int32_t main (__attribute__((unused))int32_t argc, __attribute__((unused))char *
         {
             printf(" Completed %s command successfully\n", local_1b8);
         }
+        memset(local_1b8, 0, 0x14);
     }
 }
+
+/**
+ * Source code file has been recreated from assembly by myself.
+ */
