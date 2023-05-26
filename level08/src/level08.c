@@ -65,3 +65,7 @@ int32_t main (__attribute__((unused))int32_t argc, __attribute__((unused))char *
     close(local__78);
     return (0);
 }
+
+/**
+ * Source code file has been recreated from assembly by myself.
+ */
