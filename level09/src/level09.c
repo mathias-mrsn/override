@@ -30,15 +30,15 @@ void set_msg (t_struct *msg)
 
 void set_username (t_struct *msg)
 {
-    char buffer[0x90];
+    char buffer[0x80];
 
-    memset(buffer, 0, 0x10);
+    memset(buffer, 0, 0x80);
     puts(">: Enter your username");
     printf(">>: ");
     fgets(buffer, 0x80, stdin);
 
     int32_t _rbp = 0;
-    while(_rbp < 0x28 && buffer[_rbp] != 0)
+    while(_rbp <= 0x28 && buffer[_rbp] != 0)
     {
         msg->username[_rbp] = buffer[_rbp];
         _rbp++;
@@ -51,6 +51,7 @@ void handle_msg (void)
     t_struct msg;
 
     memset(msg.username, 0, 0x28);
+    msg.len = 0x8c;
     set_username(&msg);
     set_msg(&msg);
     puts(">: Msg sent!");
